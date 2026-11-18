@@ -1,0 +1,295 @@
+@use "./variables.scss" as *;
+
+// Gernot Tscherteu – übernommen aus publish.css (realitylab Brand Manual v1.1)
+// Schrift Rajdhani, Links #EA4814, Akzent #46A0BF
+
+// Fließtext in Systemschrift (wie Obsidian Publish), Rajdhani nur für Titel und Menü
+$text-font:
+  -apple-system,
+  BlinkMacSystemFont,
+  "Inter",
+  "Segoe UI",
+  "Helvetica Neue",
+  Arial,
+  sans-serif;
+
+body {
+  font-family: $text-font;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #222222;
+  -webkit-font-smoothing: antialiased;
+}
+
+article,
+article p,
+article li,
+article td,
+.search {
+  font-family: $text-font;
+}
+
+article p,
+article li {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+// ---- Linke Spalte: Foto, Name, Suche, Menü ----
+.sidebar.left {
+  border-right: 1px solid #e0e0e0;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+
+  a {
+    color: #111111;
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    width: 190px;
+    height: 190px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+    background: url("/static/gernot.png") center 20% / cover no-repeat;
+  }
+}
+
+// Überschrift „Explorer“ ausblenden
+.explorer .desktop-explorer {
+  display: none;
+}
+
+.explorer {
+  font-family: "Rajdhani", sans-serif;
+
+  .folder-title,
+  .explorer-ul li > a {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: #555555;
+    opacity: 1;
+  }
+
+  .explorer-ul li > a.active,
+  .folder-button:hover .folder-title,
+  .explorer-ul li > a:hover {
+    color: #ea4814;
+  }
+}
+
+// Ordnerseiten: Liste unter der Übersicht ausblenden (die Übersicht hat eigene Tabellen)
+.page-listing {
+  display: none;
+}
+
+a.internal,
+a.external {
+  color: #ea4814;
+  background: none;
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: #c03a0f;
+  }
+}
+
+strong > a.internal,
+strong > a.external {
+  font-weight: 600;
+}
+
+article td code {
+  font-size: 12px;
+  padding: 1px 4px;
+}
+
+// ---- Seitentitel & Überschriften ----
+.article-title {
+  font-size: 40px;
+  line-height: 44px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  color: #111111;
+}
+
+article h1,
+article h2 {
+  font-size: 24px;
+  line-height: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  margin-top: 40px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+article h3 {
+  font-size: 24px;
+  line-height: 28px;
+}
+
+// ---- Tabellen (Stil wie realitylab.at) ----
+.table-container > table {
+  border: none;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 12px 0 32px;
+  font-size: 14px;
+
+  th {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #666666;
+    padding: 8px 12px;
+    border: none;
+    text-align: left;
+  }
+
+  td {
+    padding: 8px 12px;
+    border: none;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 1.45;
+
+    p {
+      font-size: 14px;
+      line-height: 1.45;
+      margin: 0;
+    }
+  }
+
+  tbody tr:nth-child(odd) {
+    background: #f0f0f0;
+  }
+
+  // Leere Kopfzeilen ausblenden
+  thead:not(:has(th:not(:empty))) {
+    display: none;
+  }
+}
+
+// Jahresspalte nicht umbrechen
+.table-container > table:has(thead th:not(:empty)) td:first-child {
+  white-space: nowrap;
+}
+
+// Zweispaltige Listen (Projekte & Publikationen)
+.table-container > table:has(thead th:empty) {
+  td:first-child {
+    width: 40%;
+    padding-right: 24px;
+  }
+  td:last-child {
+    width: 60%;
+  }
+}
+
+// ---- realitylab-Projekttabellen ----
+table.rl-projects {
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 12px 0 32px;
+  font-size: 14px;
+
+  td {
+    border: none;
+    padding: 8px 12px;
+    vertical-align: middle;
+  }
+  tr:nth-child(odd) {
+    background: #f0f0f0;
+  }
+  td:first-child {
+    width: 174px;
+  }
+  td:nth-child(3) {
+    width: 110px;
+  }
+  td:nth-child(4) {
+    width: 22%;
+  }
+  img {
+    max-width: 150px;
+    max-height: 50px;
+    display: block;
+  }
+}
+
+// ---- Bilder, Zitate ----
+article img {
+  border-radius: 4px;
+}
+
+blockquote {
+  border-left: 3px solid #ea4814;
+  background: #f2f3f1;
+  padding: 16px 20px;
+  border-radius: 0 4px 4px 0;
+}
+
+// ---- Info-Boxen Projektdaten / Publikationsdaten ----
+.callout[data-callout="projekt"],
+.callout[data-callout="publikation"] {
+  --color: #46a0bf;
+  --border: #46a0bf;
+  --bg: #f2f3f1;
+  border: none;
+  border-left: 3px solid #46a0bf;
+  font-size: 0.95em;
+
+  .callout-icon {
+    display: none;
+  }
+
+  .callout-title {
+    font-weight: 600;
+    color: #666666;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    letter-spacing: 0.03em;
+  }
+
+  .callout-content p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  strong {
+    color: #666666;
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 768px) {
+  .article-title {
+    font-size: 36px;
+    line-height: 36px;
+  }
+  article h2 {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}
